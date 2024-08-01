@@ -11,7 +11,7 @@ interface IEmergency {
 }
 
 interface IClassEnrolled {
-  classid: Schema.Types.ObjectId;
+  classId: Schema.Types.ObjectId;
   className: string;
   courseName: string;
   schedule: string;
@@ -20,6 +20,7 @@ interface IClassEnrolled {
   pickUpArrange?: string;
   fee: number;
   status?: string;
+  [key: string]: any;
 }
 
 export interface IStudent {
@@ -54,7 +55,7 @@ const EmergencySchema = new Schema<IEmergency>(
 );
 
 const ClassEnrolledSchema = new Schema<IClassEnrolled>({
-  classid: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
+  classId: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
   className: { type: String, required: true },
   courseName: { type: String, required: true },
   schedule: { type: String, required: true },
@@ -63,6 +64,7 @@ const ClassEnrolledSchema = new Schema<IClassEnrolled>({
   pickUpArrange: { type: String },
   fee: { type: Number, required: true },
   status: { type: String },
+  additionalProperties: { type: Map, of: Schema.Types.Mixed, default: {} },
 });
 
 const StudentSchema = new Schema<IStudent>({
@@ -80,5 +82,5 @@ const StudentSchema = new Schema<IStudent>({
   classEnrolled: ClassEnrolledSchema,
 });
 
-const Student = model<IStudent>('Student', StudentSchema);
-export default Student;
+const StudentModel = model<IStudent>('Student', StudentSchema);
+export default StudentModel;

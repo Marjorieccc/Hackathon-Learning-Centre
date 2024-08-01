@@ -1,0 +1,35 @@
+import { Schema, model } from 'mongoose';
+
+interface ICourseRef {
+  courseId: Schema.Types.ObjectId;
+  name: string;
+}
+
+export interface IClass {
+  _id: Schema.Types.ObjectId;
+  name: string;
+  ageGroup?: string;
+  schedule: string;
+  course: ICourseRef;
+  students: Schema.Types.ObjectId[];
+}
+
+const CourseRefSchema = new Schema<ICourseRef>(
+  {
+    courseId: { type: Schema.Types.ObjectId, required: true },
+    name: { type: String, required: true },
+  },
+  { _id: false }
+);
+
+const ClassSchema = new Schema<IClass>({
+  _id: { type: Schema.Types.ObjectId, required: true },
+  name: { type: String, required: true },
+  ageGroup: { type: String },
+  schedule: { type: String, required: true },
+  course: CourseRefSchema,
+  students: [Schema.Types.ObjectId],
+});
+
+const ClassModel = model<IClass>('Class', ClassSchema);
+export default ClassModel;
