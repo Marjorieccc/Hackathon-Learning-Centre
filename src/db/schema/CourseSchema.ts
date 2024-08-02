@@ -20,12 +20,15 @@ const ClassRefSchema = new Schema<IClassRef>(
   { _id: false }
 );
 
-const CourseSchema = new Schema<ICourse>({
-  _id: { type: Schema.Types.ObjectId, required: true },
-  name: { type: String, required: true },
-  ageGroup: { type: String },
-  classes: [{ type: ClassRefSchema }],
-});
+const CourseSchema = new Schema<ICourse>(
+  {
+    _id: { type: Schema.Types.ObjectId, required: true },
+    name: { type: String, required: true },
+    ageGroup: { type: String },
+    classes: [{ type: ClassRefSchema }],
+  },
+  { collection: 'Courses' }
+);
 
-const CourseModel = model<ICourse>('Course', CourseSchema);
+const CourseModel = model<ICourse>('Courses', CourseSchema);
 export default CourseModel;

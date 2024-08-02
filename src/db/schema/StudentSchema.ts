@@ -35,7 +35,7 @@ export interface IStudent {
   specialNeeds?: string;
   guardian?: IGuardian;
   emergency: IEmergency;
-  classEnrolled: IClassEnrolled;
+  classEnrolled: IClassEnrolled[];
 }
 
 const GuardianSchema = new Schema<IGuardian>(
@@ -67,20 +67,23 @@ const ClassEnrolledSchema = new Schema<IClassEnrolled>({
   additionalProperties: { type: Map, of: Schema.Types.Mixed, default: {} },
 });
 
-const StudentSchema = new Schema<IStudent>({
-  _id: { type: Schema.Types.ObjectId, required: true },
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  gender: { type: String, required: true },
-  dob: { type: Date },
-  phone: { type: Number, required: true },
-  email: { type: String, required: true },
-  address: { type: String, required: true },
-  specialNeeds: { type: String },
-  guardian: { type: GuardianSchema },
-  emergency: { type: EmergencySchema, required: true },
-  classEnrolled: ClassEnrolledSchema,
-});
+const StudentSchema = new Schema<IStudent>(
+  {
+    _id: { type: Schema.Types.ObjectId, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    gender: { type: String, required: true },
+    dob: { type: Date },
+    phone: { type: Number, required: true },
+    email: { type: String, required: true },
+    address: { type: String, required: true },
+    specialNeeds: { type: String },
+    guardian: { type: GuardianSchema },
+    emergency: { type: EmergencySchema, required: true },
+    classEnrolled: [{ type: ClassEnrolledSchema, requied: true }],
+  },
+  { collection: 'Students' }
+);
 
-const StudentModel = model<IStudent>('Student', StudentSchema);
+const StudentModel = model<IStudent>('Students', StudentSchema);
 export default StudentModel;

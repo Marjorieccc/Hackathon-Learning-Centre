@@ -11,7 +11,7 @@ export interface IClass {
   ageGroup?: string;
   schedule: string;
   course: ICourseRef;
-  students: Schema.Types.ObjectId[];
+  students?: Schema.Types.ObjectId[];
 }
 
 const CourseRefSchema = new Schema<ICourseRef>(
@@ -22,14 +22,17 @@ const CourseRefSchema = new Schema<ICourseRef>(
   { _id: false }
 );
 
-const ClassSchema = new Schema<IClass>({
-  _id: { type: Schema.Types.ObjectId, required: true },
-  name: { type: String, required: true },
-  ageGroup: { type: String },
-  schedule: { type: String, required: true },
-  course: CourseRefSchema,
-  students: [Schema.Types.ObjectId],
-});
+const ClassSchema = new Schema<IClass>(
+  {
+    _id: { type: Schema.Types.ObjectId, required: true },
+    name: { type: String, required: true },
+    ageGroup: { type: String },
+    schedule: { type: String, required: true },
+    course: CourseRefSchema,
+    students: [{ type: Schema.Types.ObjectId }],
+  },
+  { collection: 'Classes' }
+);
 
-const ClassModel = model<IClass>('Class', ClassSchema);
+const ClassModel = model<IClass>('Classes', ClassSchema);
 export default ClassModel;
