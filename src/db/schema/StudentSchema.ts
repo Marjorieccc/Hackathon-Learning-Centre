@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Types } from 'mongoose';
 
 interface IGuardian {
   fullName: string;
@@ -12,7 +12,7 @@ interface IEmergency {
 }
 
 interface IClassEnrolled {
-  classId: Schema.Types.ObjectId;
+  classId: Types.ObjectId;
   className: string;
   courseName: string;
   schedule: string;
@@ -25,7 +25,7 @@ interface IClassEnrolled {
 }
 
 export interface IStudent {
-  _id: Schema.Types.ObjectId;
+  _id: Types.ObjectId;
   firstName: string;
   lastName: string;
   gender: string;

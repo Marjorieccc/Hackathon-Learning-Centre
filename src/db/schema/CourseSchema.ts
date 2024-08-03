@@ -1,12 +1,12 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Types } from 'mongoose';
 
 interface IClassRef {
-  classId: Schema.Types.ObjectId;
+  classId: Types.ObjectId;
   name: string;
 }
 
 export interface ICourse {
-  _id: Schema.Types.ObjectId;
+  _id: Types.ObjectId;
   name: string;
   ageGroup?: string;
   classes: IClassRef[];
