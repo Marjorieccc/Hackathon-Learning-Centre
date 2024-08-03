@@ -1,0 +1,82 @@
+[
+  {
+    "_id": "64c0f90a7e6b9e2b90234567",
+    "firstName": "John",
+    "lastName": "Ma",
+    "gender": "Male",
+    "dob": "2015-01-01T00:00:00.000Z",
+    "phone": 6748902112,
+    "email": "abc@gmail.com",
+    "address": "4300 Steeles Ave E, Markham, L3R 0Y5",
+    "specialNeeds": "No",
+    "guardian": {
+      "fullName": "Nim Ma",
+      "relationship": "Parent"
+    },
+    "emergency": {
+      "fullName": "Dassy",
+      "phone": 6748901234,
+      "relationship": "Father"
+    },
+    "classEnrolled": [
+      {
+        "classId": "64c0f84c9f1f9c35f00464ef",
+        "className": "Kids Can Cook (Age 6-9) - July 2 to 5",
+        "courseName": "Summer 2024 S.T.E.A.M. Camp (Age 6-9)",
+        "schedule": "July 2 to 5 (Tue-Fri) 9am-3pm",
+        "enrolledTime": "2024-06-20T14:07:11.000Z",
+        "beforeAfterCamp": "Before Care (7:30am to 9:00am)",
+        "pickUpArrange": "Dassy 6748901234",
+        "fee": 142.5,
+        "status": "Paid",
+        "discount": 5
+      },
+      {
+        "classId": "64c0f8d7fd6f9d3c123f45ac",
+        "className": "Nature Seekers Adventure (Age 6-9) - July 8 to 12",
+        "courseName": "Summer 2024 S.T.E.A.M. Camp (Age 6-9)",
+        "schedule": "July 8 to 12 (Mon-Fri) 9am-3pm",
+        "enrolledTime": "2024-06-20T14:07:11.000Z",
+        "beforeAfterCamp": "Before Care (7:30am to 9:00am)",
+        "pickUpArrange": "Dassy 6748901234",
+        "fee": 142.5,
+        "status": "Paid",
+        "discount": 5
+      }
+    ]
+  },
+  {
+    "_id": "64c0f92d7e6b9e2b90234568",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "gender": "Female",
+    "dob": "2014-12-15T00:00:00.000Z",
+    "phone": 6748902134,
+    "email": "jane.doe@gmail.com",
+    "address": "1234 Main St, Markham, L3P 0Y4",
+    "specialNeeds": "No",
+    "guardian": {
+      "fullName": "Emily Doe",
+      "relationship": "Grandparent"
+    },
+    "emergency": {
+      "fullName": "Michael Doe",
+      "phone": 6748901235,
+      "relationship": "Mum"
+    },
+    "credits": 30,
+    "classEnrolled": [
+      {
+        "classId": "64c0f8d7fd6f9d3c123f45ac",
+        "className": "Nature Seekers Adventure (Age 6-9) - July 8 to 12",
+        "courseName": "Summer 2024 S.T.E.A.M. Camp (Age 6-9)",
+        "schedule": "July 8 to 12 (Mon-Fri) 9am-3pm",
+        "enrolledTime": "2024-06-20T15:17:11.000Z",
+        "beforeAfterCamp": "Before Care (7:30am to 9:00am)",
+        "pickUpArrange": "Michael Doe 6748901235",
+        "fee": 150,
+        "status": "Paid"
+      }
+    ]
+  }
+]

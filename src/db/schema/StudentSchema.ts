@@ -2,12 +2,13 @@ import { Schema, model } from 'mongoose';
 
 interface IGuardian {
   fullName: string;
-  relationshipToStudent: string;
+  relationship: string;
 }
 
 interface IEmergency {
   fullName: string;
   phone: number;
+  relationship: string;
 }
 
 interface IClassEnrolled {
@@ -35,13 +36,14 @@ export interface IStudent {
   specialNeeds?: string;
   guardian?: IGuardian;
   emergency: IEmergency;
+  credits?: number;
   classEnrolled: IClassEnrolled[];
 }
 
 const GuardianSchema = new Schema<IGuardian>(
   {
     fullName: { type: String, required: true },
-    relationshipToStudent: { type: String, required: true },
+    relationship: { type: String, required: true },
   },
   { _id: false }
 );
@@ -50,22 +52,25 @@ const EmergencySchema = new Schema<IEmergency>(
   {
     fullName: { type: String, required: true },
     phone: { type: Number, required: true },
+    relationship: { type: String, required: true },
   },
   { _id: false }
 );
 
-const ClassEnrolledSchema = new Schema<IClassEnrolled>({
-  classId: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
-  className: { type: String, required: true },
-  courseName: { type: String, required: true },
-  schedule: { type: String, required: true },
-  enrolledTime: { type: Date, required: true },
-  beforeAfterCamp: { type: String },
-  pickUpArrange: { type: String },
-  fee: { type: Number, required: true },
-  status: { type: String },
-  additionalProperties: { type: Map, of: Schema.Types.Mixed, default: {} },
-});
+const ClassEnrolledSchema = new Schema<IClassEnrolled>(
+  {
+    classId: { type: Schema.Types.ObjectId, ref: 'Class', required: true },
+    className: { type: String, required: true },
+    courseName: { type: String, required: true },
+    schedule: { type: String, required: true },
+    enrolledTime: { type: Date, required: true },
+    beforeAfterCamp: { type: String },
+    pickUpArrange: { type: String },
+    fee: { type: Number, required: true },
+    status: { type: String },
+  },
+  { _id: false, strict: false }
+);
 
 const StudentSchema = new Schema<IStudent>(
   {
@@ -80,6 +85,7 @@ const StudentSchema = new Schema<IStudent>(
     specialNeeds: { type: String },
     guardian: { type: GuardianSchema },
     emergency: { type: EmergencySchema, required: true },
+    credits: { type: Number },
     classEnrolled: [{ type: ClassEnrolledSchema, requied: true }],
   },
   { collection: 'Students' }

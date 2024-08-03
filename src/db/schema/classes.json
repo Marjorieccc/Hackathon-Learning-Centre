@@ -1,0 +1,24 @@
+[
+  {
+    "_id": "64c0f84c9f1f9c35f00464ef",
+    "name": "Kids Can Cook (Age 6-9) - July 2 to 5",
+    "ageGroup": "6-9",
+    "schedule": "July 2 to 5 (Tue-Fri) 9am-3pm",
+    "course": {
+      "courseId": "64c0f8bdfd6f9d3c123f45ab",
+      "name": "Summer 2024 S.T.E.A.M. Camp (Age 6-9)"
+    },
+    "students": ["64c0f90a7e6b9e2b90234567"]
+  },
+  {
+    "_id": "64c0f8d7fd6f9d3c123f45ac",
+    "name": "Nature Seekers Adventure (Age 6-9) - July 8 to 12",
+    "ageGroup": "6-9",
+    "schedule": "July 8 to 12 (Mon-Fri) 9am-3pm",
+    "course": {
+      "courseId": "64c0f8bdfd6f9d3c123f45ab",
+      "name": "Summer 2024 S.T.E.A.M. Camp (Age 6-9)"
+    },
+    "students": ["64c0f90a7e6b9e2b90234567", "64c0f92d7e6b9e2b90234568"]
+  }
+]
