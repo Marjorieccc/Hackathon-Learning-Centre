@@ -1,5 +1,5 @@
 import { Types } from 'mongoose';
-import CourseModel, { ICourse } from './schema/CourseSchema.js';
+import CourseModel, { ICourse } from '../schema/CourseSchema.js';
 
 /**
  * Add one or more courses into the database.
@@ -15,9 +15,9 @@ export async function addCourses(courses: ICourse | ICourse[]): Promise<any> {
 /**
  * Retrieves all courses from the database.
  * @async
- * @returns {Promise<ICourse | ICourse[] | null>} A promise of a course or an array of courses, or null if no result found.
+ * @returns {Promise<ICourse[] | null>} A promise of an array of courses, or null if no result found.
  */
-export async function getCourses(): Promise<ICourse | ICourse[] | null> {
+export async function getCourses(): Promise<ICourse[] | null> {
   const courses = CourseModel.find();
   return courses;
 }
@@ -39,12 +39,12 @@ export async function searchCourseById(
  * Searches for courses by name, using a partial match.
  * @async
  * @param searchTerm - search term
- * @returns {Promise<ICourse | ICourse[] | null>} A promise that resolves to an array of course objects matching the search criteria,
+ * @returns {Promise<ICourse[] | null>} A promise that resolves to an array of course objects matching the search criteria,
  *                                      or null if no matches are found.
  */
 export async function searchCourseByName(
   searchTerm: string
-): Promise<ICourse | ICourse[] | null> {
+): Promise<ICourse[] | null> {
   const course = await CourseModel.find({
     name: { $regex: searchTerm, $options: 'i' },
   });

@@ -11,7 +11,7 @@ export interface IClass {
   ageGroup?: string;
   schedule: string;
   course: ICourseRef;
-  students?: Schema.Types.ObjectId[];
+  students?: Types.ObjectId[];
 }
 
 const CourseRefSchema = new Schema<ICourseRef>(

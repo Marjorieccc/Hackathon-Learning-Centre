@@ -1,5 +1,5 @@
 import { Types } from 'mongoose';
-import ClassModel, { IClass } from './schema/ClassSchema.js';
+import ClassModel, { IClass } from '../schema/ClassSchema.js';
 
 /**
  * Add one or more classes into the database.
@@ -15,9 +15,9 @@ export async function addClasses(classes: IClass | IClass[]): Promise<any> {
 /**
  * Retrieves all classes from the database.
  * @async
- * @returns {Promise<IClass| IClass[] | null>} Promise that resolves to an array of classes.
+ * @returns {Promise<IClass[] | null>} - Promise that resolves to an array of classes.
  */
-export async function getClasses(): Promise<IClass | IClass[] | null> {
+export async function getClasses(): Promise<IClass[] | null> {
   const classes = await ClassModel.find();
   return classes;
 }
@@ -25,8 +25,8 @@ export async function getClasses(): Promise<IClass | IClass[] | null> {
 /**
  * Search a class by its object id
  * @async
- * @param {Types.ObjectId} id id of the class
- * @returns {Promise<IClass | null>} Promise of a class, or null if not found
+ * @param {Types.ObjectId} id - The object id of the class
+ * @returns {Promise<IClass | null>} - Promise of a class, or null if not found
  */
 export async function searchClassById(
   id: Types.ObjectId
@@ -38,12 +38,12 @@ export async function searchClassById(
 /**
  * Search a class by its partial or full name
  * @async
- * @param name name of the class
- * @returns {Promise<IClass | IClass[] | null>} Promise of a class object or class array, or null if not found
+ * @param name - The name of the class
+ * @returns {Promise<IClass[] | null>} - Promise of a class object or class array, or null if not found
  */
 export async function searchClassByName(
   name: string
-): Promise<IClass | IClass[] | null> {
+): Promise<IClass[] | null> {
   const classMatched = await ClassModel.find({
     name: { $regex: name, $options: 'i' },
   });
@@ -53,12 +53,12 @@ export async function searchClassByName(
 /**
  * Search a class under a specified course, using the course name
  * @async
- * @param {Types.ObjectId} courseId object id of the course
- * @returns {Promise<IClass | IClass[] | null>} Promise of a class object or class array, or null if not found
+ * @param {Types.ObjectId} courseId - The object id of the course
+ * @returns {Promise<IClass[] | null>} - Promise of a class array, or null if not found
  */
 export async function searchClassesByCourse(
   courseId: Types.ObjectId
-): Promise<IClass | IClass[] | null> {
+): Promise<IClass[] | null> {
   const classes = await ClassModel.find({ 'course.courseId': courseId });
   return classes;
 }
